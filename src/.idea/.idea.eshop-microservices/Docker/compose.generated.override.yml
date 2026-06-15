@@ -1,0 +1,20 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  catalog.api:
+    build:
+      context: "/Users/pedro/dev/estudos/MCSV-.NET/src"
+      dockerfile: "Service/Catalog/Catalog.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net10.0/Catalog.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "catalog.api:dev"
+    ports: []
+    volumes:
+    - "/Users/pedro/dev/estudos/MCSV-.NET/src/Service/Catalog/Catalog.API:/app:rw"
+    - "/Users/pedro/dev/estudos/MCSV-.NET/src:/src:rw"
+    - "/Users/pedro/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"

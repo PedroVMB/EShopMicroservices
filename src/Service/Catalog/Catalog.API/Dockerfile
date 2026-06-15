@@ -9,11 +9,11 @@ EXPOSE 6061
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Services/Catalog/Catalog.API/Catalog.API.csproj", "Services/Catalog/Catalog.API/"]
+COPY ["Service/Catalog/Catalog.API/Catalog.API.csproj", "Service/Catalog/Catalog.API/"]
 COPY ["BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj", "BuildingBlocks/BuildingBlocks/"]
-RUN dotnet restore "./Services/Catalog/Catalog.API/./Catalog.API.csproj"
+RUN dotnet restore "./Service/Catalog/Catalog.API/./Catalog.API.csproj"
 COPY . .
-WORKDIR "/src/Services/Catalog/Catalog.API"
+WORKDIR "/src/Service/Catalog/Catalog.API"
 RUN dotnet build "./Catalog.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
